@@ -12,3 +12,7 @@ docs/
 
 # Dotenv file
 .env
+
+# node_modules and yarn files
+node_modules
+yarn.lock
