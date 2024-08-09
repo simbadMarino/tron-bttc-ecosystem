@@ -427,7 +427,7 @@ async function execute() {
     const provider = new ethers.providers.Web3Provider(window.ethereum);
     const signer = provider.getSigner();        //This is going to get the connected account
     const contract = new ethers.Contract(contractAddress, abi, signer);
-    await contract.addNewIntegration("thegraph", "thegraph is an indexer tool which would be great to have on TRON");
+    await contract.addNewIntegration("Example Integration Project", "This is Project integration description");
 }
 
 module.exports = {
