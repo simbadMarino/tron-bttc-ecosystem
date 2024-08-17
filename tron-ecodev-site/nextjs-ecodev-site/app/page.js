@@ -20,8 +20,8 @@ export default function Home() {
       try {
         await ethereum.request({ method: "eth_requestAccounts" });
         setIsConnected(true);
-        const provider = new ethers.BrowserProvider(window.ethereum);
-        setSigner(await provider.getSigner());
+        //  const provider = new ethers.BrowserProvider(window.ethereum);
+        // setSigner(await provider.getSigner());
       } catch (e) {
         console.log(e);
       }
