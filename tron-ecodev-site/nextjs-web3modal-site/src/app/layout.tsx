@@ -10,7 +10,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 
 export const metadata: Metadata = {
-  title: "TRON Eco Dev",
+  title: "TRON Ecosystem",
   description: "On-chain ticket system for the TRON | BTTC ecosystem",
 };
 

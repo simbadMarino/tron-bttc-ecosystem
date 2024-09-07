@@ -9,6 +9,14 @@ const columns = [
     { name: "ACTIONS", uid: "actions" },
 ];
 
+const statusOptions = [
+    { name: "NEW", uid: "NEW" },
+    { name: "IN_REVIEW", uid: "IN_REVIEW" },
+    { name: "DEF", uid: "DEF" },
+    { name: "DONE", uid: "DONE" },
+    { name: "REJ", uid: "REJ" },
+];
+
 const users: any = [
     {
         id: 1,
@@ -29,7 +37,7 @@ const users: any = [
         raisedby: "0xqdjdhasd28347823489jk234ffsf",
     },
     {
-        id: 4,
+        id: 3,
         title: "TEST3",
         status: "DONE",
         description: "Description of project 3",
@@ -47,7 +55,7 @@ const users: any = [
         raisedby: "0xqdjdhasd28347823489jk234ffsf",
     },
     {
-        id: 4,
+        id: 5,
         title: "TEST3",
         status: "NEW",
         description: "Description of project 3",
@@ -56,7 +64,7 @@ const users: any = [
         raisedby: "0xqdjdhasd28347823489jk234ffsf",
     },
     {
-        id: 4,
+        id: 6,
         title: "TEST3",
         status: "REJ",
         description: "Description of project 3",
@@ -65,7 +73,7 @@ const users: any = [
         raisedby: "0xqdjdhasd28347823489jk234ffsf",
     },
     {
-        id: 4,
+        id: 7,
         title: "TEST3",
         status: "REJ",
         description: "Description of project 3",
@@ -74,7 +82,7 @@ const users: any = [
         raisedby: "0xqdjdhasd28347823489jk234ffsf",
     },
     {
-        id: 4,
+        id: 8,
         title: "TEST3",
         status: "DEF",
         description: "Description of project 3",
@@ -83,7 +91,7 @@ const users: any = [
         raisedby: "0xqdjdhasd28347823489jk234ffsf",
     },
     {
-        id: 4,
+        id: 9,
         title: "TEST3",
         status: "DEF",
         description: "Description of project 3",
@@ -92,7 +100,7 @@ const users: any = [
         raisedby: "0xqdjdhasd28347823489jk234ffsf",
     },
     {
-        id: 4,
+        id: 10,
         title: "TEST3",
         status: "DEF",
         description: "Description of projectfdfdfdfdfdfdfwerwerdfjsdfhsdufdsufhdufhdfudhfdushfdufhdsufhduhdufhdsufhdufhdsufhdfdufh 3",
@@ -103,4 +111,4 @@ const users: any = [
 
 ];
 
-export { columns, users };
+export { columns, users, statusOptions };
