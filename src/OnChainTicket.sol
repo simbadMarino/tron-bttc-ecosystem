@@ -11,6 +11,7 @@ Collect Integration and Collaboration proposals for TRON/BTTC ecosystem and use 
 6) Upvote for Problem Reports --> Done
 7) Get contributors Address list --> Done
 8) Modify ticket Status --> Done
+9) Implement mappings for each PR and Project Integration --> In progress
 
 BTTickets v1 Contract
 */
@@ -43,10 +44,18 @@ contract OnchainTicket is Ownable {
     Ticket[] public listOfIntegrations; //Array to store all Integrations
     Ticket[] public listOfIssues; //Array to store all issues raised
 
-    mapping(uint128 => string) public getProjectFromID;
+    mapping(uint128 => string) public getProjectUniqueIDFromID;
+    mapping(uint128 => string) public getProjectTitleFromID;
+    mapping(uint128 => string) public getProjectDescriptionFromID;
     mapping(uint128 => uint8) public getIntegrationStatusFromID;
+    mapping(uint128 => uint16) public getProjectVotesFromID;
+    mapping(uint128 => string) public getProjectRaisedByAddressFromID;
+    mapping(uint128 => string) public getIssueUniqueIDFromID;
     mapping(uint128 => string) public getIssueTitleFromID;
+    mapping(uint128 => string) public getIssueDescriptionFromID;
     mapping(uint128 => uint8) public getIssueStatusFromID;
+    mapping(uint128 => uint16) public getIssueVotesFromID;
+    mapping(uint128 => string) public getIssueRaisedByAddressFromID;
 
     constructor() Ownable(msg.sender) {
         integrationIndex = 0; //Initialize integration index so we can start unique IDs from 1
@@ -63,7 +72,11 @@ contract OnchainTicket is Ownable {
             Ticket(strUniqueID, _projectName, _description, NEW, 0, msg.sender)
         );
 
-        getProjectFromID[integrationIndex] = _projectName;
+        getProjectTitleFromID[integrationIndex] = _projectName;
+        getProjectUniqueIDFromID[integrationIndex] = strUniqueID;
+        getProjectDescriptionFromID[integrationIndex] = _description;
+        getIntegrationStatusFromID[integrationIndex] = NEW;
+        getProjectVotesFromID[integrationIndex] = 0;
         integrationIndex++;
     }
 
@@ -85,6 +98,10 @@ contract OnchainTicket is Ownable {
         );
 
         getIssueTitleFromID[issueIndex] = _issueTitle;
+        getIssueUniqueIDFromID[issueIndex] = strUniqueID;
+        getIssueDescriptionFromID[issueIndex] = _issueDescription;
+        getIssueStatusFromID[issueIndex] = NEW;
+        getIssueVotesFromID[issueIndex] = 0;
         issueIndex++;
     }
 
@@ -103,11 +120,12 @@ contract OnchainTicket is Ownable {
     }
 
     function updatePRStatus(
-        uint8 _problemReportIndex,
+        uint128 _problemReportIndex,
         uint8 _newStatus
     ) external onlyOwner {
         Ticket storage updatedPR = listOfIssues[_problemReportIndex]; //create a new struct of Ticket type and assign selected listOfissues array
         updatedPR.status = _newStatus; //Update selected PR status
+        getIssueStatusFromID[_problemReportIndex] = _newStatus; //Update PR Status mapping
     }
 
     function upVotePR(uint8 _problemReportIndex) external {
@@ -116,11 +134,12 @@ contract OnchainTicket is Ownable {
     }
 
     function updateIRStatus(
-        uint8 _integrationIndex,
+        uint128 _integrationIndex,
         uint8 _newStatus
     ) external onlyOwner {
         Ticket storage updatedIR = listOfIntegrations[_integrationIndex]; //create a new struct of Ticket type and assign selected listOfissues array
         updatedIR.status = _newStatus; //Update selected PR status
+        getIntegrationStatusFromID[_integrationIndex] = _newStatus; //Update Integration Status mapping
     }
 
     function upVoteIR(uint8 _integrationIndex) external {
@@ -128,5 +147,13 @@ contract OnchainTicket is Ownable {
             _integrationIndex
         ];
         updatedVoteCounter.voteCount++;
+    }
+
+    function getPRList() external view returns (Ticket[] memory) {
+        return listOfIssues;
+    }
+
+    function getIntegrationsList() external view returns (Ticket[] memory) {
+        return listOfIntegrations;
     }
 }

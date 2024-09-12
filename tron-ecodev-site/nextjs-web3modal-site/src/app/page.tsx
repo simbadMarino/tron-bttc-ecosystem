@@ -202,6 +202,26 @@ export default function Home() {
     }
 
   }
+
+  async function getIntegrationStatus() {
+    if (isConnected) {
+      const contractAddress = "0xa47B3D9f3646Bebd4C391F7a1182C671be843C61";  //0x5FbDB2315678afecb367f032d93F642f64180aa3
+      const contract = new ethers.Contract(contractAddress, abi, signer);
+      try {
+        console.log(await contract.getProjectFromID(4));
+      }
+      catch (error) {
+        console.log(error);
+      }
+
+
+    }
+    else {
+      console.log("Please connect your wallet");
+    }
+
+  }
+
   /*
   const renderCell = useCallback((user: any, columnKey: any) => {
     const cellValue = user[columnKey];
@@ -431,6 +451,13 @@ export default function Home() {
               onPress={onPRModalOpen}>
               Create PR
             </Button></div>
+            <div><Button
+              className="bg-foreground text-background"
+              size="sm"
+              onPress={getIntegrationStatus}>
+              Test mapping getter
+            </Button></div>
+
           </div>
         </div>
         <div className="flex justify-between items-center">
@@ -506,7 +533,7 @@ export default function Home() {
   return (
     <main color="primary" className="dark flex min-h-screen flex-col items-center justify-between p-2">
       <Navbar disableAnimation isBordered classNames={{
-        base: "bg-primary/15 shadow-lg",
+        base: "bg-default-600/15 shadow-lg",
       }}>
         <NavbarContent className="sm:hidden" justify="start">
           <NavbarMenuToggle />
@@ -529,12 +556,12 @@ export default function Home() {
           <NavbarItem>
             {hasMetamask ? (
               isConnected ? (
-                <Button isDisabled color="primary" variant="ghost" onClick={() => connect()}>Connected</Button>
+                <Button isDisabled color="success" variant="ghost" onClick={() => connect()}>Connected</Button>
               ) : (
-                <Button color="primary" variant="ghost" onClick={() => connect()}>Connect Wallet</Button>
+                <Button color="warning" variant="ghost" onClick={() => connect()}>Connect Wallet</Button>
               )
             ) : (
-              <Button isDisabled color="primary" variant="ghost" onClick={() => connect()}>Wallet Not Detected</Button>
+              <Button isDisabled color="default" variant="ghost" onClick={() => connect()}>Wallet Not Detected</Button>
             )}
           </NavbarItem>
         </NavbarContent>
