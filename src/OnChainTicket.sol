@@ -28,6 +28,7 @@ contract OnchainTicket is Ownable {
     uint8 internal constant DEF = 2;
     uint8 internal constant DONE = 3;
     uint8 internal constant REJ = 4;
+    uint8 internal constant HIDE = 5;
 
     struct Ticket {
         //Struct for Integration proposals and their unique IDs
@@ -36,7 +37,7 @@ contract OnchainTicket is Ownable {
         string uniqueIDString; //Unique ID adding a prefix for either Issue or Integration
         string title; //Ticket Title
         string description; //Ticket description
-        uint8 status; //Ticket Status(Suggested): 0: New, 1: Under Analysis, 2: Defered, 3: Done, 4: Rejected
+        uint8 status; //Ticket Status(Suggested): 0: New, 1: Under Analysis, 2: Defered, 3: Done, 4: Rejected, 5: HIDE (to be used for hiding from frontend)
         uint16 voteCount; //Ticket vote Counter
         address raisedBy; //This variable will store the address of the ticketOwner
     }

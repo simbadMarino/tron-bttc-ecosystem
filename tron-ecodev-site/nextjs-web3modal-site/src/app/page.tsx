@@ -184,7 +184,7 @@ export default function Home() {
 
   async function addNewIntegration(_IRTitle: string, _IRDescription: string) {
     if (isConnected) {
-      const contractAddress = "0xa47B3D9f3646Bebd4C391F7a1182C671be843C61";  //0x5FbDB2315678afecb367f032d93F642f64180aa3
+      const contractAddress = "0x28471b32E700c13e96cD807839899b1D51190064";  //New: 0x28471b32E700c13e96cD807839899b1D51190064
       const contract = new ethers.Contract(contractAddress, abi, signer);
       try {
         if (_IRTitle != null || _IRDescription != null) { //No empty title OR description are allowed
@@ -205,10 +205,10 @@ export default function Home() {
 
   async function getIntegrationStatus() {
     if (isConnected) {
-      const contractAddress = "0xa47B3D9f3646Bebd4C391F7a1182C671be843C61";  //0x5FbDB2315678afecb367f032d93F642f64180aa3
+      const contractAddress = "0x28471b32E700c13e96cD807839899b1D51190064";  //new: 0x28471b32E700c13e96cD807839899b1D51190064
       const contract = new ethers.Contract(contractAddress, abi, signer);
       try {
-        console.log(await contract.getProjectFromID(4));
+        console.log(await contract.getIntegrationsList());
       }
       catch (error) {
         console.log(error);
@@ -455,7 +455,7 @@ export default function Home() {
               className="bg-foreground text-background"
               size="sm"
               onPress={getIntegrationStatus}>
-              Test mapping getter
+              Get Integrations
             </Button></div>
 
           </div>

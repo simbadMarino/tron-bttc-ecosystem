@@ -61,6 +61,89 @@ export const abi = [
     },
     {
         "type": "function",
+        "name": "getIntegrationsList",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "",
+                "type": "tuple[]",
+                "internalType": "struct OnchainTicket.Ticket[]",
+                "components": [
+                    {
+                        "name": "uniqueIDString",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "status",
+                        "type": "uint8",
+                        "internalType": "uint8"
+                    },
+                    {
+                        "name": "voteCount",
+                        "type": "uint16",
+                        "internalType": "uint16"
+                    },
+                    {
+                        "name": "raisedBy",
+                        "type": "address",
+                        "internalType": "address"
+                    }
+                ]
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getIssueDescriptionFromID",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint128",
+                "internalType": "uint128"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "string",
+                "internalType": "string"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getIssueRaisedByAddressFromID",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint128",
+                "internalType": "uint128"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "string",
+                "internalType": "string"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
         "name": "getIssueStatusFromID",
         "inputs": [
             {
@@ -99,7 +182,7 @@ export const abi = [
     },
     {
         "type": "function",
-        "name": "getProjectFromID",
+        "name": "getIssueUniqueIDFromID",
         "inputs": [
             {
                 "name": "",
@@ -112,6 +195,165 @@ export const abi = [
                 "name": "",
                 "type": "string",
                 "internalType": "string"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getIssueVotesFromID",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint128",
+                "internalType": "uint128"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint16",
+                "internalType": "uint16"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getPRList",
+        "inputs": [],
+        "outputs": [
+            {
+                "name": "",
+                "type": "tuple[]",
+                "internalType": "struct OnchainTicket.Ticket[]",
+                "components": [
+                    {
+                        "name": "uniqueIDString",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "title",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "description",
+                        "type": "string",
+                        "internalType": "string"
+                    },
+                    {
+                        "name": "status",
+                        "type": "uint8",
+                        "internalType": "uint8"
+                    },
+                    {
+                        "name": "voteCount",
+                        "type": "uint16",
+                        "internalType": "uint16"
+                    },
+                    {
+                        "name": "raisedBy",
+                        "type": "address",
+                        "internalType": "address"
+                    }
+                ]
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getProjectDescriptionFromID",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint128",
+                "internalType": "uint128"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "string",
+                "internalType": "string"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getProjectRaisedByAddressFromID",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint128",
+                "internalType": "uint128"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "string",
+                "internalType": "string"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getProjectTitleFromID",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint128",
+                "internalType": "uint128"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "string",
+                "internalType": "string"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getProjectUniqueIDFromID",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint128",
+                "internalType": "uint128"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "string",
+                "internalType": "string"
+            }
+        ],
+        "stateMutability": "view"
+    },
+    {
+        "type": "function",
+        "name": "getProjectVotesFromID",
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint128",
+                "internalType": "uint128"
+            }
+        ],
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint16",
+                "internalType": "uint16"
             }
         ],
         "stateMutability": "view"
@@ -321,8 +563,8 @@ export const abi = [
         "inputs": [
             {
                 "name": "_integrationIndex",
-                "type": "uint8",
-                "internalType": "uint8"
+                "type": "uint128",
+                "internalType": "uint128"
             },
             {
                 "name": "_newStatus",
@@ -339,8 +581,8 @@ export const abi = [
         "inputs": [
             {
                 "name": "_problemReportIndex",
-                "type": "uint8",
-                "internalType": "uint8"
+                "type": "uint128",
+                "internalType": "uint128"
             },
             {
                 "name": "_newStatus",
